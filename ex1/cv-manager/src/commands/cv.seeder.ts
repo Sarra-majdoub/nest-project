@@ -58,7 +58,7 @@ async function bootstrap() {
       age: randNumber({ min: 18, max: 60 }),
       cin: `AB${randNumber({ min: 10000, max: 99999 })}`,
       job: randJobTitle(),
-      path: randFilePath(),
+      //path: randFilePath(),
     }, user.id, selectedSkills);
 
     console.log(`Created CV ${i + 1}/20`);
