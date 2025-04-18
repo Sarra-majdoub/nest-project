@@ -12,6 +12,9 @@ export class User {
   @Column()
   email: string;
 
+  @Column() // Assurez-vous que cette ligne existe
+  password: string;
+
   @OneToMany(() => Cv, (cv) => cv.user)
   cvs: Cv[];
 }

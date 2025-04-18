@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
+import { BaseService } from '../shared/base.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
-export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+export class UserService extends BaseService<User> {
+  remove(arg0: number) {
+    throw new Error('Method not implemented.');
+  }
+  constructor(
+    @InjectRepository(User)
+    protected readonly repository: Repository<User>,
+  ) {
+    super(repository);
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const user = this.repository.create(createUserDto);
+    return this.repository.save(user);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async findByEmail(email: string): Promise<User | undefined> {
+    const user = await this.repository.findOne({ where: { email } });
+    return user ?? undefined;
   }
 }
