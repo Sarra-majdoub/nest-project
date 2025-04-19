@@ -3,7 +3,7 @@ import { Cv } from '../../cv/entities/cv.entity';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn() // Pour garder des numbers
   id: number;
 
   @Column()
@@ -11,6 +11,7 @@ export class User {
 
   @Column()
   email: string;
+  c;
 
   @Column() // Assurez-vous que cette ligne existe
   password: string;

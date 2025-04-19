@@ -17,3 +17,13 @@ Accept: application/json
 ### Get all CVs (no filters)
 GET http://localhost:3000/cv
 Accept: application/json
+
+### Version 1 (sans auth)
+GET http://localhost:3000/v1/cv
+
+### Version 2 (avec auth)
+GET http://localhost:3000/v2/cv
+auth-user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywiaWF0IjoxNzQ1MDU0Mjc2LCJleHAiOjE3NDUwNTc4NzZ9.L8ld7ExjMVkuStRR2Y2MMFl_txBZXlHa59uCl0okJXo
+
+### Pagination example (page 1, limit 5)
+GET http://localhost:3000/v1/cv?page=2&limit=5

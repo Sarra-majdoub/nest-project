@@ -1,11 +1,23 @@
-import { Controller, Get, Query, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CvService } from './cv.service';
 import { CreateCvDto } from './dto/create-cv.dto';
 import { UpdateCvDto } from './dto/update-cv.dto';
 import { Cv } from './entities/cv.entity';
 import { SearchCvDto } from './dto/search-cv.dto';
+//import { PaginationDto } from 'src/shared/pagination.dto';
 
-@Controller('cv')
+@Controller({
+  version: '1',
+})
 export class CvController {
   constructor(private readonly cvService: CvService) {}
 
@@ -16,11 +28,14 @@ export class CvController {
   }
 
   @Get()
-  findAll(@Query() searchCvDto: SearchCvDto) {
+  async findAll(
+    @Query() searchCvDto: SearchCvDto,
+    //@Query() paginationDto: PaginationDto,
+  ) {
     if (searchCvDto.search || searchCvDto.age) {
       return this.cvService.search(searchCvDto);
     }
-    return this.cvService.findAll();
+    //return this.cvService.findAllPaginated(paginationDto);
   }
 
   @Get(':id')

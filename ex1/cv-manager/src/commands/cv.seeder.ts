@@ -12,6 +12,9 @@ import {
   randNumber,
   randSkill,
 } from '@ngneat/falso';
+
+import { sign } from 'jsonwebtoken';
+
 import { User } from '../user/entities/user.entity';
 import { Skill } from '../skill/entities/skill.entity';
 import { CreateUserDto } from '../user/dto/create-user.dto';
@@ -76,10 +79,12 @@ async function bootstrap() {
     console.log(`Created CV ${i + 1}/20`);
   }
 
-  await app.close();c
+  await app.close();
   console.log('Seeding completed!');
   const testSearch = await cvService.search({ search: 'développeur' });
   console.log('Test search results:', testSearch);
+
+
 }
 
 bootstrap();
