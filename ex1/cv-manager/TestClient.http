@@ -1,2 +1,19 @@
-### post
-POST http://localhost:3000
+### Health Check
+GET http://localhost:3000/
+Accept: application/json
+
+### Search CVs by keyword (name, firstname or job)
+GET http://localhost:3000/cv?search=développeur
+Accept: application/json
+
+### Search CVs by age
+GET http://localhost:3000/cv?age=28
+Accept: application/json
+
+### Search CVs by both keyword and age
+GET http://localhost:3000/cv?search=développeur&age=30
+Accept: application/json
+
+### Get all CVs (no filters)
+GET http://localhost:3000/cv
+Accept: application/json
