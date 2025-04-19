@@ -5,6 +5,7 @@ import { CvModule } from './cv/cv.module';
 import { SkillModule } from './skill/skill.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
     UserModule,
     CvModule,
     SkillModule,
+    TestModule
   ],
   controllers: [AppController],
   providers: [AppService],
